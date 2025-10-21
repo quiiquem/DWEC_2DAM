@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem";
 
-function TaskColumn({titulo, tareas}){
+function TaskColumn({titulo, tareas}){ //columnas de las tareas
     const tareas = tasks.length === 0 ? (<p style={{color: "#6e6e6e", textAlign: "center"}}> Columna sin datos </p>) : (tareas.map((tareas) => <TaskItem key={tareas.id} {...tareas}></TaskItem>) )
     return (
         <div style={{
