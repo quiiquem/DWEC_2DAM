@@ -1,0 +1,73 @@
+/* Contenedor principal */
+#root {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Título */
+h1 {
+  font-size: 2.5rem;              /* más grande */
+  color: #0f5b86;                 /* azul moderno */
+  margin-bottom: 1.5rem;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* fuente moderna */
+  font-weight: 700;
+}
+
+/* Formulario */
+form {
+  margin-bottom: 2rem;
+}
+
+input[type="text"] {
+  width: 70%;
+  padding: 0.8rem;                /* más grande */
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;            /* bordes más redondeados */
+}
+
+/* Botones */
+button {
+  padding: 0.8rem 1.2rem;         /* más grandes */
+  margin-left: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;         
+  cursor: pointer;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* misma fuente que h1 */
+}
+
+button[type="submit"] {
+  background-color: #0f5b86;
+  color: white;
+}
+
+button.delete {
+  background-color: #e63946;
+  color: white;
+  margin-left: 10px;
+  padding: 1rem 1.5rem;          
+  border-radius: 16px;         
+  font-size: 1.2rem;
+}
+
+/* Lista de tareas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+  border-radius: 8px;             /* bordes suaves en cada tarea */
+}
+
+
+/*el CSS SI que lo he hecho con IA, ya que el ejercicio lo que busca esq tenga el todolist funcionando, no se enfoca en el CSS asi que le 
+pedi a una IA que lo editara rapidamente para enfocarme más en el ejercicio en si, pero asi tmb se ve mejor*/
