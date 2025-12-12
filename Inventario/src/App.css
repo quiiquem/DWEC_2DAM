@@ -1,0 +1,43 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.Item_Producto{
+  background-color: #FFFFEE;
+  font-size: 130%;
+}
+
+/* Estilo para el título */
+h2 {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Estilo para los inputs */
+input {
+  border: 2px solid black;
+  font-size: 1.1rem;
+  padding: 8px;
+  margin: 5px 0;
+  width: 250px;
+}
+
+/* Estilo para el botón */
+button {
+  background-color: #d3d3d3; /* gris claro */
+  font-weight: bold;
+  padding: 15px 18px;
+  border: none;
+  cursor: pointer;
+}
