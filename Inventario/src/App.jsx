@@ -1,12 +1,11 @@
-import { useReducer, useState } from "react";
+import { useReducer, useRef } from "react";
 import inventoryReducer from "./inventoryReducer";
+import InventoryControls from "./InventoryControls";
+import ProductList from "./ProductList";
+
 import "./App.css";
-import inventoryControls from
 
-
-  let nextId = 104;
 function App() {
-
   const initialInventory = [
     { id: 101, name: "Tornillos M4 (Caja)", stock: 150, price: 0.15 },
     { id: 102, name: "Cable Ethernet 5m", stock: 50, price: 5.99 },
@@ -15,63 +14,45 @@ function App() {
 
   const [inventory, dispatch] = useReducer(inventoryReducer, initialInventory);
 
-  // Estados para añadir producto
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-
-  // Estados para eliminar
-  const [removeId, setRemoveId] = useState("");
-
-  // Estados para editar
-  const [editId, setEditId] = useState("");
-  const [editPrice, setEditPrice] = useState("");
-
-  // Estados para reponer stock
-  const [stockId, setStockId] = useState("");
-  const [stockAmount, setStockAmount] = useState("");
+  //subir el id por cada uso
+  const nextIdRef = useRef(Math.max(...initialInventory.map(p => p.id)) + 1);
 
   // Handlers
-  const handleAddProduct = () => {
-    dispatch({
-      type: "ADD_PRODUCT",
-      id: nextId++,
-      name,
-      price: parseFloat(price) || 0.0,
-    });
-    setName("");
-    setPrice("");
+const handleAddProduct = (name, price) => {
+  const newId = nextIdRef.current;  
+  dispatch({
+    type: "ADD_PRODUCT",
+    id: newId,
+    name,
+    price: parseFloat(price) || 0.0,
+  });
+  nextIdRef.current += 1; 
+};
+
+
+  const handleRemoveProduct = (id) => {
+    dispatch({ type: "REMOVE_PRODUCT", id });
   };
 
-  const handleRemoveProduct = () => {
-    dispatch({ type: "REMOVE_PRODUCT", id: parseInt(removeId) });
-    setRemoveId("");
+  const handleEditProduct = (id, newPrice) => {
+    dispatch({ type: "PRICE_UPDATE", id, newPrice: parseFloat(newPrice) });
   };
 
-  const handleEditProduct = () => {
-    if (editName) {
-      dispatch({ type: "PRICE_UPDATE", id: parseInt(editId), newPrice: parseFloat(editPrice) });
-
-    }
-    setEditId("");
-    setEditName("");
-    setEditPrice("");
-  };
-
-  const handleReStock = () => {
-    dispatch({
-      type: "RESTOCK",
-      id: parseInt(stockId),
-      amount: parseInt(stockAmount) || 0,
-    });
-    setStockId("");
-    setStockAmount("");
+  const handleReStock = (id, amount) => {
+    dispatch({ type: "RESTOCK", id, amount: parseInt(amount) || 0 });
   };
 
   return (
     <>
       <h1>INVENTARIO DWEC</h1>
-     <InventoryControls></InventoryControls>
-</>
+      <InventoryControls
+        onAdd={handleAddProduct}
+        onRemove={handleRemoveProduct}
+        onEdit={handleEditProduct}
+        onRestock={handleReStock}
+      />
+      <ProductList inventory={inventory} />
+    </>
   );
 }
 

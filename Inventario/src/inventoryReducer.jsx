@@ -4,7 +4,7 @@ export default function inventoryReducer(inventory, action) {
     case "ADD_PRODUCT": {
       // Creamos el nuevo producto con el siguiente ID y stock inicial 0
       const newProduct = {
-        id: action.nextId++,
+        id: action.id,
         name: action.name,
         stock: 0,
         price: action.price || 0.0, // Usa 0.00 si no se proporciona precio
